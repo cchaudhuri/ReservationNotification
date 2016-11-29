@@ -85,6 +85,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
 
                 intent = new Intent(this, MainActivity.class);
                 intent.putExtra(ReservationNotificationConstants.FCM_FLOW, true);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 finish();
 

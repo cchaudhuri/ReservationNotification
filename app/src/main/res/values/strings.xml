@@ -14,4 +14,7 @@
     <string name="home_header">Reservation Notification</string>
     <string name="promo_header">Promo Offers</string>
     <string name="search_header">Search Reservations</string>
+    <string name="arrived_vehicle_header">Arrived Vehicle Details</string>
+    <string name="arrived_vehicle_header_instructions">Your vehicle has arrived. Please follow the below instructions to reach the boarding point.</string>
+
 </resources>

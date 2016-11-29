@@ -14,7 +14,7 @@ public class EhiNotificationConstants {
     public static final String API_HEADER_VALUE_BOOKING_API = "1Q7VbsO93CPDMxTyzYp0ADnXG56gaRymAsp3vRiTcfw";
 
     public static final String API_HEADER_KEY_CALLING_ENTITY = "Calling_Identity";
-    public static final String API_HEADER_KEY_CALLING_ENTITY_VALUE = "MA";
+    public static final String API_HEADER_VALUE_CALLING_ENTITY = "MA";
 
     public static final long HTTP_CACHE_SIZE_IN_BYTES = 1024 * 1024 * 10;
     public static final int HTTP_CONNECTION_TIMEOUT = 125;

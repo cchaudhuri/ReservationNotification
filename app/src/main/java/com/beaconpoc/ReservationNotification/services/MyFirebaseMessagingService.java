@@ -1,5 +1,6 @@
 package com.beaconpoc.ReservationNotification.services;
 
+import android.app.Activity;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -10,7 +11,9 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
+import android.widget.Toast;
 
+import com.beaconpoc.ReservationNotification.ArrivedVehicleDetailsActivity;
 import com.beaconpoc.ReservationNotification.MainActivity;
 import com.beaconpoc.ReservationNotification.MyApplication;
 import com.beaconpoc.ReservationNotification.R;
@@ -51,9 +54,9 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     }
 
-    private void sendNotification(PushNotificationFcmModel pushNotificationFcmModel) {
+    private void sendNotification(PushNotificationFcmModel pushNotificationFcmModel, Class activity) {
 
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, activity);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.putExtra(ReservationNotificationConstants.FCM_FLOW, true);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
@@ -61,17 +64,23 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 
+        String contentTitle = "";
+        String contentText = "";
+
+        if(activity == MainActivity.class){
+            contentTitle = pushNotificationFcmModel.getReservations().get(0).getCompanyName() + " - "
+                    + pushNotificationFcmModel.getReservations().get(0).getCategory();
+            contentText = "Reservation Number : " + pushNotificationFcmModel.getReservations().get(0).getReservationId();
+        }else{
+            contentTitle = "Your vehicle has arrived";
+            contentText = "Vehicle Number : " + pushNotificationFcmModel.getReservations().get(0).getVehicleNo();
+        }
+
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
                         /*.setLargeIcon(image)*/
                 .setSmallIcon(R.mipmap.ic_launcher)
-                .setContentTitle(pushNotificationFcmModel.getReservations().get(0).getCompanyName()
-                        + " - "
-                        + pushNotificationFcmModel.getReservations().get(0).getPromoOffers().getRules().get(0).getCategory())
-                .setContentText(pushNotificationFcmModel.getReservations().get(0).getPromoOffers().getRules().get(0).getDiscount()
-                        + " "
-                        + pushNotificationFcmModel.getReservations().get(0).getPromoOffers().getRules().get(0).getDiscountType()
-                        + " "
-                        +pushNotificationFcmModel.getReservations().get(0).getPromoOffers().getRules().get(0).getDescription())
+                .setContentTitle(contentTitle)
+                .setContentText(contentText)
                         /*.setStyle(new NotificationCompat.BigPictureStyle().bigPicture(image))Notification with Image*/
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)
@@ -119,7 +128,12 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             }.getType();
             pushNotificationFcmModel.setReservations((List<ReservationModel>) gson.fromJson(reservations, reservationsListType));
             ((MyApplication) getApplication()).setPushNotificationFcmModel(pushNotificationFcmModel);
-            sendNotification(pushNotificationFcmModel);
+            if(remoteMessage.getData().get("callingIdentity").equalsIgnoreCase("BM")){
+                sendNotification(pushNotificationFcmModel, ArrivedVehicleDetailsActivity.class);
+            }else{
+                sendNotification(pushNotificationFcmModel, MainActivity.class);
+            }
+
 
 
         } catch (Exception e) {

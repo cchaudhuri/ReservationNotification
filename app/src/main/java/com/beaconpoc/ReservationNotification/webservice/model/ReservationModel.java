@@ -17,6 +17,7 @@ public class ReservationModel implements Parcelable {
     private PromoOffers promoOffers;
     private DriveDistance driveDistance;
     private String specialInstructions;
+    private String vehicleNo;
 
     public ReservationModel() {
 
@@ -33,6 +34,7 @@ public class ReservationModel implements Parcelable {
         promoOffers = in.readParcelable(PromoOffers.class.getClassLoader());
         driveDistance = in.readParcelable(DriveDistance.class.getClassLoader());
         specialInstructions = in.readString();
+        vehicleNo = in.readString();
     }
 
     public DriveDistance getDriveDistance() {
@@ -115,6 +117,14 @@ public class ReservationModel implements Parcelable {
         this.promoOffers = promoOffers;
     }
 
+    public String getVehicleNo() {
+        return vehicleNo;
+    }
+
+    public void setVehicleNo(String vehicleNo) {
+        this.vehicleNo = vehicleNo;
+    }
+
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(reservationId);
@@ -127,6 +137,7 @@ public class ReservationModel implements Parcelable {
         dest.writeParcelable(promoOffers, flags);
         dest.writeParcelable(driveDistance, flags);
         dest.writeString(specialInstructions);
+        dest.writeString(vehicleNo);
     }
 
     @Override

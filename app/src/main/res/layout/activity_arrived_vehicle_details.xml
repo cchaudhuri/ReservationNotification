@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:id="@+id/ParentScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_with_shadow"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/welcome_msg"
+                android:text=""
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_with_shadow"
+                android:gravity="center"
+                android:layout_margin="@dimen/activity_horizontal_margin"
+                style="@style/sub_heading"
+                android:padding="@dimen/margin_medium"/>
+
+            <TextView
+                android:id="@+id/reservation_id"
+                android:text="@string/reservation_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/sub_heading"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/margin_medium"
+                android:paddingBottom="@dimen/margin_medium"/>
+
+            <View style="@style/separator"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/reservation_booking_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/medium_text_bold"
+                    android:background="@drawable/circular_bg"
+                    android:layout_alignParentRight="true"
+                    android:text="$30.6"
+                    android:gravity="center"
+                    android:layout_margin="@dimen/margin_small"/>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/car_detailsscreen"
+                    android:id="@+id/imageView" />
+
+            </RelativeLayout>
+
+            <View
+                style="@style/separator"/>
+
+            <TextView
+                android:id="@+id/reservation_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Deluxe"
+                style="@style/content_style"
+                android:background="@drawable/rounded_corner_bg"
+                android:textColor="@color/swatch_confirm_green_primary"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/margin_small"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/margin_medium"
+                android:paddingBottom="@dimen/margin_medium"/>
+
+            <TextView
+                android:id="@+id/reservation_vehicle_num"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/content_style"
+                android:text="Vehicle Num :"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/margin_medium"
+                android:paddingBottom="@dimen/margin_medium"/>
+
+            <TextView
+                android:id="@+id/reservation_special_instructions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Please DO NOT lock the doors with the actual keys (or with the keylock on the inside of the door) when you exit the vehicle at the end of your reservation time. Instead, the doors need to be locked by using your membership card."
+                style="@style/content_style"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/margin_small"
+                android:paddingBottom="@dimen/activity_horizontal_margin"
+                android:layout_marginBottom="@dimen/tabbar_height"/>
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

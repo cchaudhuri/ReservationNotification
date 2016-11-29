@@ -41,6 +41,7 @@
         <activity android:name=".PromoOfferDetailsActivity" />
         <activity android:name=".POIActivity" />
         <activity android:name=".SearchActivity" />
+        <activity android:name=".ArrivedVehicleDetailsActivity" />
 
     </application>
 

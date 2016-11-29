@@ -84,6 +84,7 @@ public class MainActivity extends BaseActivity {
 
         if(!isBeaconFlow && !isFCMFlow){
             Intent intent = new Intent(this, SearchActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
             finish();
         }

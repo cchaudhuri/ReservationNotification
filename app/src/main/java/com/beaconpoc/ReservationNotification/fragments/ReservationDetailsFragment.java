@@ -43,6 +43,8 @@ public class ReservationDetailsFragment extends BaseFragment {
             ((ScrollView) inflateView.findViewById(R.id.ParentScrollView)).setVisibility(View.VISIBLE);
             ((TextView) inflateView.findViewById(R.id.welcome_msg)).setVisibility(View.GONE);
 
+            ((TextView) inflateView.findViewById(R.id.reservation_category))
+                    .setText(pushNotificationFcmModel.getReservations().get(0).getCategory());
             ((TextView) inflateView.findViewById(R.id.reservation_booking_price))
                     .setText(Float.toString(pushNotificationFcmModel.getReservations().get(0).getBookingPrice()) + "$");
             ((TextView) inflateView.findViewById(R.id.reservation_number))

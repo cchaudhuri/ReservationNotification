@@ -25,7 +25,7 @@ public class EhiNotificationInterceptor implements Interceptor {
         requestBuilder.addHeader(EhiNotificationConstants.API_HEADER_KEY_CONTENT_TYPE, EhiNotificationConstants.API_HEADER_VALUE_CONTENT_TYPE);
         requestBuilder.addHeader(EhiNotificationConstants.API_HEADER_KEY_APP_PLATFORM, EhiNotificationConstants.API_HEADER_VALUE_APP_PLATFORM);
         requestBuilder.addHeader(EhiNotificationConstants.API_HEADER_KEY_BOOKING_API, EhiNotificationConstants.API_HEADER_VALUE_BOOKING_API);
-        requestBuilder.addHeader(EhiNotificationConstants.API_HEADER_KEY_CALLING_ENTITY, EhiNotificationConstants.API_HEADER_KEY_CALLING_ENTITY_VALUE);
+        requestBuilder.addHeader(EhiNotificationConstants.API_HEADER_KEY_CALLING_ENTITY, EhiNotificationConstants.API_HEADER_VALUE_CALLING_ENTITY);
 
         return chain.proceed(requestBuilder.build());
     }
